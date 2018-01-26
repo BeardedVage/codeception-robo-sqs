@@ -62,8 +62,8 @@ class RoboFile extends \Robo\Tasks
         //check messages in Queue
         do {
             sleep(60);
-            $countResults = shell_exec("cd /var/www/llsoft/tests/_output/$project && find -maxdepth 1 -type f | wc -l");
-            echo "Let's wait a little bit. Tests are in progress. $countResults groups of tests are over. " .
+            $countResults = shell_exec("cd tests/_output/$project && find -maxdepth 1 -type f | wc -l");
+            echo "Let's wait a little bit. Tests are in progress. \n $countResults groups of tests are over. " .
                 ($expectedCount - $expectedCount) . " are left \n";
         } while ($countResults < $expectedCount);
     }
@@ -87,7 +87,7 @@ class RoboFile extends \Robo\Tasks
         $tests = explode(',', $tests);
 
         //deleting old reports
-        shell_exec('rm --rf /var/www/llsoft/tests/_output/' . $project);
+        shell_exec('rm --rf tests/_output/' . $project);
 
         $this->sqsClient = SqsClient::factory(array(
             'key' => $this->awsKey,
