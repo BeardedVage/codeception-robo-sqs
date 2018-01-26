@@ -1,0 +1,7 @@
+{
+    "require": {
+        "consolidation/Robo": "~1",
+        "aws/aws-sdk-php": "dev-master",
+        "codeception/codeception": "^2.3"
+    }
+}
